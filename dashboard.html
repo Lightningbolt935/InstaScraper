@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Profile Rankings Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(to bottom right, #faf5ff, #fce7f3);
+            min-height: 100vh;
+            padding: 1.5rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .header-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-box {
+            background: linear-gradient(to right, #a855f7, #ec4899);
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-box svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .status-connected {
+            background: #dcfce7;
+            color: #166534;
+            border-color: #86efac;
+        }
+
+        .status-disconnected {
+            background: #fee2e2;
+            color: #991b1b;
+            border-color: #fca5a5;
+        }
+
+        .status-checking {
+            background: #fef3c7;
+            color: #92400e;
+            border-color: #fcd34d;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #9333ea;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #7e22ce;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .last-update {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .alert {
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .alert-blue {
+            background: #dbeafe;
+            border: 2px solid #93c5fd;
+        }
+
+        .alert-red {
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+        }
+
+        .alert-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+
+        .code-block {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .code-block code {
+            display: block;
+            background: #f3f4f6;
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-family: monospace;
+        }
+
+        .sort-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sort-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .sort-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .sort-btn {
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            border: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sort-btn.active {
+            background: #9333ea;
+            color: white;
+        }
+
+        .sort-btn:not(.active) {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .sort-btn:not(.active):hover {
+            background: #d1d5db;
+        }
+
+        .loading-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 1rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .table-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: linear-gradient(to right, #9333ea, #ec4899);
+            color: white;
+        }
+
+        th {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tbody tr:hover {
+            background: #faf5ff;
+        }
+
+        .rank-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom right, #a855f7, #ec4899);
+            color: white;
+            font-weight: bold;
+        }
+
+        .profile-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .profile-pic {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e9d5ff;
+        }
+
+        .profile-name {
+            font-weight: 600;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .profile-username {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-title {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .overflow-scroll {
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; }
+            .header-top { flex-direction: column; align-items: stretch; }
+            .header-right { align-items: stretch; }
+            .controls { flex-direction: column; }
+            th, td { padding: 0.75rem; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-card">
+            <div class="header-top">
+                <div class="header-left">
+                    <div class="icon-box">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1>Instagram Profile Rankings</h1>
+                        <p class="subtitle">Real-time analytics dashboard with Python backend</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div id="statusBadge" class="status-badge status-checking">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                            <line x1="6" y1="6" x2="6.01" y2="6"/>
+                            <line x1="6" y1="18" x2="6.01" y2="18"/>
+                        </svg>
+                        <span id="statusText">Checking...</span>
+                    </div>
+                    <div class="controls">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="autoRefresh" checked>
+                            Auto-refresh (5min)
+                        </label>
+                        <button class="btn btn-primary" id="refreshBtn">
+                            <svg id="refreshIcon" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                            Force Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <p class="last-update" id="lastUpdate"></p>
+        </div>
+
+        <!-- Backend Instructions -->
+        <div id="backendAlert" class="alert alert-blue" style="display: none;">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+            </svg>
+            <div style="flex: 1;">
+                <h3 class="alert-title" style="color: #1e3a8a;">Backend Server Required</h3>
+                <p style="color: #1e40af; margin-bottom: 1rem;">The Python Flask backend is not running. Follow these steps to start it:</p>
+                <div class="code-block">
+                    <p style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Step 1: Install Dependencies</p>
+                    <code>pip install -r requirements.txt</code>
+                    <p style="font-weight: 600; color: #1f2937; margin: 1rem 0 0.5rem;">Step 2: Run the Backend</p>
+                    <code>python backend.py</code>
+                </div>
+                <p style="font-size: 0.875rem; color: #1e40af;">
+                    Once the backend is running on <strong>http://localhost:5000</strong>, refresh this page!
+                </p>
+            </div>
+        </div>
+
+        <!-- Error Alert -->
+        <div id="errorAlert" class="alert alert-red" style="display: none;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #dc2626; flex-shrink: 0;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+            <div>
+                <p style="color: #991b1b; font-weight: 500;">Error</p>
+                <p id="errorText" style="color: #dc2626; font-size: 0.875rem;"></p>
+            </div>
+        </div>
+
+        <!-- Sort Controls -->
+        <div id="sortCard" class="sort-card" style="display: none;">
+            <div class="sort-controls">
+                <span class="sort-label">Sort by:</span>
+                <button class="sort-btn active" data-field="followers">Followers <span id="sort-followers">↓</span></button>
+                <button class="sort-btn" data-field="following">Following <span id="sort-following"></span></button>
+                <button class="sort-btn" data-field="posts">Posts <span id="sort-posts"></span></button>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" class="loading-card">
+            <svg class="spinner" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #9333ea;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+            <p style="color: #6b7280;">Loading Instagram profiles...</p>
+        </div>
+
+        <!-- Table -->
+        <div id="tableCard" class="table-card" style="display: none;">
+            <div class="overflow-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Profile</th>
+                            <th>Followers</th>
+                            <th>Following</th>
+                            <th>Posts</th>
+                            <th>Engagement Ratio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div id="statsGrid" class="stats-grid" style="display: none;"></div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+        let profiles = [];
+        let sortBy = 'followers';
+        let sortOrder = 'desc';
+        let autoRefreshInterval;
+
+        const elements = {
+            statusBadge: document.getElementById('statusBadge'),
+            statusText: document.getElementById('statusText'),
+            refreshBtn: document.getElementById('refreshBtn'),
+            refreshIcon: document.getElementById('refreshIcon'),
+            lastUpdate: document.getElementById('lastUpdate'),
+            backendAlert: document.getElementById('backendAlert'),
+            errorAlert: document.getElementById('errorAlert'),
+            errorText: document.getElementById('errorText'),
+            sortCard: document.getElementById('sortCard'),
+            loading: document.getElementById('loading'),
+            tableCard: document.getElementById('tableCard'),
+            tableBody: document.getElementById('tableBody'),
+            statsGrid: document.getElementById('statsGrid'),
+            autoRefresh: document.getElementById('autoRefresh')
+        };
+
+        function updateStatus(status) {
+            elements.statusBadge.className = 'status-badge status-' + status;
+            const statusMap = {
+                connected: { text: 'Backend Connected', icon: '✓' },
+                disconnected: { text: 'Backend Offline', icon: '!' },
+                checking: { text: 'Checking...', icon: '◎' }
+            };
+            elements.statusText.textContent = statusMap[status].text;
+        }
+
+        function showError(message) {
+            elements.errorText.textContent = message;
+            elements.errorAlert.style.display = 'flex';
+        }
+
+        function hideError() {
+            elements.errorAlert.style.display = 'none';
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000000000) return (num / 1000000000).toFixed(1) + 'B';
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num?.toString() || '0';
+        }
+
+        async function checkBackendHealth() {
+            try {
+                const response = await fetch(`${API_URL}/health`);
+                if (response.ok) {
+                    updateStatus('connected');
+                    return true;
+                }
+                updateStatus('disconnected');
+                return false;
+            } catch (err) {
+                updateStatus('disconnected');
+                return false;
+            }
+        }
+
+        async function fetchProfiles() {
+            hideError();
+            elements.refreshIcon.style.animation = 'spin 1s linear infinite';
+            
+            try {
+                const response = await fetch(`${API_URL}/profiles`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch profiles from backend');
+                }
+                
+                const data = await response.json();
+                
+                if (data.success && data.data.length > 0) {
+                    profiles = data.data;
+                    elements.lastUpdate.textContent = 'Last updated: ' + new Date(data.last_update).toLocaleString();
+                    updateStatus('connected');
+                    renderProfiles();
+                    elements.backendAlert.style.display = 'none';
+                } else {
+                    showError('No profile data available. Please refresh to fetch data.');
+                }
+            } catch (err) {
+                console.error('Error:', err);
+                showError('Cannot connect to backend server. Make sure the Python server is running on http://localhost:5000');
+                updateStatus('disconnected');
+                elements.backendAlert.style.display = 'flex';
+            } finally {
+                elements.loading.style.display = 'none';
+                elements.refreshIcon.style.animation = '';
+            }
+        }
+
+        async function forceRefresh() {
+            hideError();
+            elements.refreshBtn.disabled = true;
+            elements.refreshIcon.style.animation = 'spin 1s linear infinite';
+            
+            try {
+                const response = await fetch(`${API_URL}/refresh`, { method: 'POST' });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to refresh profiles');
+                }
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    profiles = data.data;
+                    elements.lastUpdate.textContent = 'Last updated: ' + new Date(data.last_update).toLocaleString();
+                    updateStatus('connected');
+                    renderProfiles();
+                }
+            } catch (err) {
+                console.error('Error:', err);
+                showError('Failed to refresh data. Make sure the backend server is running.');
+                updateStatus('disconnected');
+            } finally {
+                elements.refreshBtn.disabled = false;
+                elements.refreshIcon.style.animation = '';
+            }
+        }
+
+        function sortProfiles() {
+            return [...profiles].sort((a, b) => {
+                const multiplier = sortOrder === 'asc' ? 1 : -1;
+                return (a[sortBy] - b[sortBy]) * multiplier;
+            });
+        }
+
+        function renderProfiles() {
+            const sorted = sortProfiles();
+            
+            elements.tableBody.innerHTML = sorted.map((profile, index) => {
+                const engagementRatio = profile.followers > 0 
+                    ? ((profile.following / profile.followers) * 100).toFixed(2)
+                    : 0;
+                
+                return `
+                    <tr>
+                        <td><div class="rank-badge">${index + 1}</div></td>
+                        <td>
+                            <div class="profile-cell">
+                                <img src="${profile.profilePic}" alt="${profile.username}" class="profile-pic">
+                                <div>
+                                    <div class="profile-name">
+                                        ${profile.fullName}
+                                        ${profile.isVerified ? '<span style="color: #3b82f6;" title="Verified">✓</span>' : ''}
+                                    </div>
+                                    <div class="profile-username">@${profile.username}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="font-weight: bold; color: #9333ea; font-size: 1.125rem;">${formatNumber(profile.followers)}</div>
+                            <div style="font-size: 0.75rem; color: #6b7280;">${profile.followers?.toLocaleString()}</div>
+                        </td>
+                        <td><div style="font-weight: 600; color: #374151;">${formatNumber(profile.following)}</div></td>
+                        <td><div style="font-weight: 600; color: #374151;">${formatNumber(profile.posts)}</div></td>
+                        <td><div style="font-size: 0.875rem; color: #6b7280;">${engagementRatio}%</div></td>
+                    </tr>
+                `;
+            }).join('');
+            
+            const totalFollowers = profiles.reduce((sum, p) => sum + (p.followers || 0), 0);
+            const totalPosts = profiles.reduce((sum, p) => sum + (p.posts || 0), 0);
+            
+            elements.statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #9333ea;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <h3 class="stat-title">Total Followers</h3>
+                    </div>
+                    <p class="stat-value" style="color: #9333ea;">${formatNumber(totalFollowers)}</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #ec4899;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <h3 class="stat-title">Total Posts</h3>
+                    </div>
+                    <p class="stat-value" style="color: #ec4899;">${formatNumber(totalPosts)}</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #6366f1;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                        <h3 class="stat-title">Profiles Tracked</h3>
+                    </div>
+                    <p class="stat-value" style="color: #6366f1;">${profiles.length}</p>
+                </div>
+            `;
+            
+            elements.sortCard.style.display = 'block';
+            elements.tableCard.style.display = 'block';
+            elements.statsGrid.style.display = 'grid';
+        }
+
+        function handleSort(field) {
+            if (sortBy === field) {
+                sortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                sortBy = field;
+                sortOrder = 'desc';
+            }
+            
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                const btnField = btn.dataset.field;
+                btn.className = 'sort-btn' + (btnField === sortBy ? ' active' : '');
+                const arrow = btn.querySelector('span');
+                if (btnField === sortBy) {
+                    arrow.textContent = sortOrder === 'asc' ? '↑' : '↓';
+                } else {
+                    arrow.textContent = '';
+                }
+            });
+            
+            renderProfiles();
+        }
+
+        function setupAutoRefresh() {
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+            }
+            
+            if (elements.autoRefresh.checked) {
+                autoRefreshInterval = setInterval(fetchProfiles, 5 * 60 * 1000);
+            }
+        }
+
+        // Event Listeners
+        elements.refreshBtn.addEventListener('click', forceRefresh);
+        elements.autoRefresh.addEventListener('change', setupAutoRefresh);
+        
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+            btn.addEventListener('click', () => handleSort(btn.dataset.field));
+        });
+
+        // Initialize
+        (async () => {
+            const isHealthy = await checkBackendHealth();
+            if (isHealthy) {
+                await fetchProfiles();
+            } else {
+                elements.loading.style.display = 'none';
+                showError('Backend server is not running. Please start the Python Flask server first.');
+                elements.backendAlert.style.display = 'flex';
+            }
+            setupAutoRefresh();
+        })();
+    </script>
+</body>
+</html>

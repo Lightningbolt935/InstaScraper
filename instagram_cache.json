@@ -1,0 +1,83 @@
+{
+  "profiles": [
+    {
+      "username": "instagram",
+      "fullName": "Instagram",
+      "followers": 694976027,
+      "following": 244,
+      "posts": 8170,
+      "profilePic": "https://instagram.fmaa16-1.fna.fbcdn.net/v/t51.2885-19/550891366_18667771684001321_1383210656577177067_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fmaa16-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QHqEfgpNvKaUceYHR2gfKAxE-PwPYnrqZMFr8EWF2oc17XejCFtU-FRXiwdmFouSwQ&_nc_ohc=p67O3F9Nw_AQ7kNvwF9X0FC&_nc_gid=J7ilqAmkFhdv933-D0_xgg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Afa_IdKMqymYuDMDGVkNylXAooGqxtwBRKoDND6jVX9_ZA&oe=68E48171&_nc_sid=8b3546",
+      "isVerified": true,
+      "biography": "Discover what's new on Instagram \ud83d\udd0e\u2728",
+      "externalUrl": "http://help.instagram.com/",
+      "isPrivate": false,
+      "fetchedAt": "2025-10-02T23:18:28.964224"
+    },
+    {
+      "username": "cristiano",
+      "fullName": "Cristiano Ronaldo",
+      "followers": 665314675,
+      "following": 613,
+      "posts": 3944,
+      "profilePic": "https://instagram.fmaa12-1.fna.fbcdn.net/v/t51.2885-19/472007201_1142000150877579_994350541752907763_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fmaa12-1.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QHzEf40BCAqKgRIrhPAXBEZFX0UL5itJ3g1j1PgwX_u7FUWZEoKvRv2VQcN2iCrJZ0&_nc_ohc=CDw24zjgQ1QQ7kNvwHmqhm7&_nc_gid=yDJeAhQaiQYq7NPjEa2cfw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfbLgdI6Qn2QyRRpHRz-0oNuMhYmyIPNcPvgtr6-KkJReA&oe=68E490DE&_nc_sid=8b3546",
+      "isVerified": true,
+      "biography": "SIUUUbscribe to my Youtube Channel!",
+      "externalUrl": "http://avacr7.com/en",
+      "isPrivate": false,
+      "fetchedAt": "2025-10-02T23:18:42.014500"
+    },
+    {
+      "username": "kyliejenner",
+      "fullName": "Kylie",
+      "followers": 392248815,
+      "following": 123,
+      "posts": 7287,
+      "profilePic": "https://instagram.fmaa16-1.fna.fbcdn.net/v/t51.2885-19/460968184_1750859332366163_8375966974919298902_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby45NTAuYzIifQ&_nc_ht=instagram.fmaa16-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QHvs3UOM-DmS5YFyJsqJU_VqaYzPAJBgRi3weuehRBcA1Yjekh3b-AHRzvC3bT1E7U&_nc_ohc=HKr1cNFKwRQQ7kNvwE_hC5M&_nc_gid=18aGhCgutzeGep4AsEZSWw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfZ25io080t7CkYsBNyHJtlWsvf1AZuDNKRwm83B1v-C7Q&oe=68E47772&_nc_sid=8b3546",
+      "isVerified": true,
+      "biography": "@kyliecosmetics @khy @drinksprinter",
+      "externalUrl": "http://kyliecosmetics.com/",
+      "isPrivate": false,
+      "fetchedAt": "2025-10-02T23:24:39.481632"
+    },
+    {
+      "username": "nike",
+      "fullName": "Nike",
+      "followers": 299031255,
+      "following": 238,
+      "posts": 1648,
+      "profilePic": "https://instagram.fmaa16-1.fna.fbcdn.net/v/t51.2885-19/551608484_18567162979020081_1135468084872726555_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4zOTkuYzIifQ&_nc_ht=instagram.fmaa16-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QGpljlHNXchV-mf_u1iTefDcACDxjHEWdQojFcMHHqoLG3gNKL0R01PXqeNBbbyUrs&_nc_ohc=SZiqvHMsDQ8Q7kNvwGyziK2&_nc_gid=2xIzW9Bw4N08NYUZ_f9jbA&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfaAT1iVgz3Iyph1Q5HOqu9LzSMeHL8hbTivNTfdpgtv8Q&oe=68E495B0&_nc_sid=8b3546",
+      "isVerified": true,
+      "biography": "Just Do It.",
+      "externalUrl": "http://empli.fi/nike",
+      "isPrivate": false,
+      "fetchedAt": "2025-10-02T23:30:40.328343"
+    },
+    {
+      "username": "natgeo",
+      "fullName": "National Geographic",
+      "followers": 276797132,
+      "following": 172,
+      "posts": 30939,
+      "profilePic": "https://instagram.fmaa16-1.fna.fbcdn.net/v/t51.2885-19/495970936_18571729156019133_4702419124763180758_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby40MDAuYzIifQ&_nc_ht=instagram.fmaa16-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QFKILV4ifT1Pf2gefiNCOvs9eiJzzHmSiSNdFRmnbIp7HR3prFob0ooaDulUPJdkVw&_nc_ohc=8csmSxPi5y4Q7kNvwEtw2fj&_nc_gid=hapsFsR-hVYHR-5BKH-VUg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfbWtzxbEdFzJEZ7aWRrh6bcYLvsYzbY3wykKErS4EghrA&oe=68E4AB5A&_nc_sid=8b3546",
+      "isVerified": true,
+      "biography": "Inspiring the explorer in everyone \ud83c\udf0e",
+      "externalUrl": "https://on.natgeo.com/instagram",
+      "isPrivate": false,
+      "fetchedAt": "2025-10-02T23:30:51.867983"
+    },
+    {
+      "username": "nasa",
+      "fullName": "NASA",
+      "followers": 96580593,
+      "following": 92,
+      "posts": 4541,
+      "profilePic": "https://instagram.fmaa16-1.fna.fbcdn.net/v/t51.2885-19/29090066_159271188110124_1152068159029641216_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fmaa16-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QEe2F3WUge2b3UzPA8RSPlDqkEBXG1pySp8LWCtH6W5e9DyuO5EXwhv55zxpz4MJPY&_nc_ohc=AZN7pjOKJA0Q7kNvwH3tX79&_nc_gid=1uA8goXDwc3NqYaK2Mn0gQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfZonV8sIBQ4kNT3HcjrObWzZyoi3oxz2c8BY0MthsEJBw&oe=68E49029&_nc_sid=8b3546",
+      "isVerified": true,
+      "biography": "\ud83d\ude80 \ud83c\udf0e  Exploring the universe and our home planet. Verification: nasa.gov/socialmedia",
+      "externalUrl": "https://www.nasa.gov/",
+      "isPrivate": false,
+      "fetchedAt": "2025-10-02T23:31:02.789604"
+    }
+  ],
+  "last_update": "2025-10-02T23:34:21.332063"
+}
